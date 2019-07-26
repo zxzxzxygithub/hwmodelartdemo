@@ -6,6 +6,7 @@ ext.uname = ""
 ext.dname = ""
 ext.pwd = ""
 ```
-
-测试结果如图：![测试结果](https://github.com/zxzxzxygithub/hwmodelartdemo/blob/master/testresult.png)
+本demo支持拍照识别，以及从相册选取图片识别
+从相册选取图片识别测试的结果如下图：
+![测试结果](https://github.com/zxzxzxygithub/hwmodelartdemo/blob/master/testresult.png)
 
