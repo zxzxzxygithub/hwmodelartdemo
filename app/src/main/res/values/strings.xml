@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">cloud_android_ocr_sdk</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="card_complete">完整</string>
+    <string name="card_not_complete">不完整</string>
+
+    <string name="fail_to_contect_camcard">无法连接到相机,请检查权限设置</string>
+
+    <string name="no_support_feature">不支持完整性判断</string>
+    <string name="image_quality_ok">图像质量完好</string>
+    <string name="image_shield">图像有遮挡</string>
+    <string name="avatar_reflective">头像有反光</string>
+    <string name="image_emblem_shield">国徽有遮挡</string>
+    <string name="image_avatar_shield">头像有遮挡</string>
+
+    <string name="color_image_yes">是</string>
+    <string name="color_image_no">否</string>
+</resources>

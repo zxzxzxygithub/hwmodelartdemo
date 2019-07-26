@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="back_line_1">#1c4587</color>
+    <color name="back_line_2">#e69138</color>
+    <color name="back_line_3">#f6b26b</color>
+    <color name="cui_list_selector_normal">#00000000</color>
+    <color name="cui_list_selector_pressed">#FF4B5D70</color>
+</resources>
