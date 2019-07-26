@@ -1,8 +1,10 @@
 package com.ocr.sdk;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -54,9 +56,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //创建一个mPermissionList，逐个判断哪些权限未授权，将未授权的权限存储到mPermissionList中
     List<String> mPermissionList = new ArrayList<>();
 
-    String domainName = "zhengyx"; // if the user isn't IAM user, domain_name is the same with username
-    String userName = "zhengyx";
-    String password = "yxzyxz78";
+    String domainName = ""; // if the user isn't IAM user, domain_name is the same with username
+    String userName = "";
+    String password = "";
     private String region = "cn-south-1";
     private String url = "https://ocr.cn-south-1.myhuaweicloud.com/v1.0/web-image";
 
@@ -70,12 +72,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ivLocalImage = findViewById(R.id.iv_img);
         tvResult = findViewById(R.id.tv_result);
         localBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pic_01);
+        initData();
         //动态申请相机和读写权限
         initPermission();
         //用户认证
         ocrToken = new HWOcrClientToken(domainName, userName, password, region);
         //使用默认图片请求ocr服务
         requestOcrTokenService(localBitmap);
+    }
+
+    private void initData() {
+        domainName = getMetaDataValue("DNAME");
+        userName = getMetaDataValue("UNAME");
+        password = getMetaDataValue("UPWD");
     }
 
     @Override
@@ -309,5 +318,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             //权限已经都通过了，可以将程序继续打开了
         }
+    }
+
+    /**
+     * 获取metadata
+     * @param metaDataName
+     * @return
+     */
+    public  String getMetaDataValue( String metaDataName) {
+        PackageManager pm = getPackageManager();
+        ApplicationInfo appinfo;
+        String metaDataValue = "";
+        try {
+            appinfo = pm.getApplicationInfo(getPackageName(),PackageManager.GET_META_DATA);
+            Bundle metaData = appinfo.metaData;
+            metaDataValue = metaData.getString(metaDataName);
+            return metaDataValue;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return metaDataValue;
     }
 }

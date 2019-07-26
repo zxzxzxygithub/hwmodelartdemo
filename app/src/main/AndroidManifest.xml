@@ -41,5 +41,14 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepath" />
         </provider>
+        <meta-data
+            android:name="UNAME"
+            android:value="${UNAME}"/>
+        <meta-data
+            android:name="DNAME"
+            android:value="${DNAME}"/>
+        <meta-data
+            android:name="UPWD"
+            android:value="${UPWD}"/>
     </application>
 </manifest>
