@@ -73,7 +73,7 @@ andResGuard {
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.ocr.ocr_sdk_demo"
+        applicationId "com.hw.modelart_demo"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
