@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 if (Build.VERSION.SDK_INT >= 24) {
                     imageUri = FileProvider.getUriForFile(this,
-                            "com.ocr.sdk.provider", outputImage);
+                            "com.ml.sdk.provider", outputImage);
                 } else {
                     imageUri = Uri.fromFile(outputImage);
                 }
@@ -146,6 +146,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (resultCode == RESULT_OK) {
                     try {
                         //将拍摄的照片显示出来
+                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+                        ivLocalImage.setImageBitmap(bitmap);
                         tvResult.setText("");
                         requestMlTokenService(outputImage);
                     } catch (Exception e) {
