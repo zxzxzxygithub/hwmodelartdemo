@@ -7,3 +7,5 @@ ext.dname = ""
 ext.pwd = ""
 ```
 
+测试结果如图：![测试结果](https://github.com/zxzxzxygithub/hwmodelartdemo/blob/master/testresult.png)
+
