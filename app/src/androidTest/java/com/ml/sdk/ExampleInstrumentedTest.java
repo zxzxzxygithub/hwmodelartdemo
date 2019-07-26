@@ -1,4 +1,4 @@
-package com.ocr.sdk;
+package com.ml.sdk;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

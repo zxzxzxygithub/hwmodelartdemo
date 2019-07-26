@@ -9,14 +9,14 @@
     android:paddingTop="20dp"
     android:paddingRight="20dp"
     android:paddingBottom="20dp"
-    tools:context="com.ocr.sdk.MainActivity">
+    tools:context="com.ml.sdk.MainActivity">
 
 
     <ImageView
         android:id="@+id/iv_img"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:src="@drawable/pic_01" />
+        android:src="@drawable/pic_02" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,7 +1,6 @@
-package com.ocr.sdk;
+package com.ml.sdk;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String localResult;//手机图片识别结果
     private TextView tvResult;//显示结果的文本框
     private Uri imageUri;
-    private HWOcrClientToken ocrToken;
+    private HWMLClientToken ocrToken;
 
     //请求状态码
     private static final int REQUEST_PERMISSION_CODE = 1;
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String userName = "";
     String password = "";
     private String region = "cn-south-1";
-    private String url = "https://ocr.cn-south-1.myhuaweicloud.com/v1.0/web-image";
+    private String url = "https://86a244ebacee403eb4a6897beb88b5f8.apigw.cn-north-1.huaweicloud.com/v1/infers/67bf2303-c36e-4b9a-963c-885653beedc5";
 
 
     @Override
@@ -71,14 +70,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_choose).setOnClickListener(this);
         ivLocalImage = findViewById(R.id.iv_img);
         tvResult = findViewById(R.id.tv_result);
-        localBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pic_01);
+        localBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pic_02);
         initData();
         //动态申请相机和读写权限
         initPermission();
         //用户认证
-        ocrToken = new HWOcrClientToken(domainName, userName, password, region);
-        //使用默认图片请求ocr服务
-        requestOcrTokenService(localBitmap);
+        ocrToken = new HWMLClientToken(domainName, userName, password, region);
     }
 
     private void initData() {
@@ -86,13 +83,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userName = getMetaDataValue("UNAME");
         password = getMetaDataValue("UPWD");
     }
-
+    File outputImage;
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_takephoto://拍照
                 //创建File对象，用于存储拍照后的图片
-                File outputImage = new File(getExternalCacheDir(), "outputImage.jpg");
+                outputImage = new File(getExternalCacheDir(), "outputImage.jpg");
                 try {
                     if (outputImage.exists()) {
                         outputImage.delete();
@@ -135,9 +132,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     localBitmap = getResizePhoto(filePath);
                     ivLocalImage.setImageBitmap(localBitmap);
                     if (localBitmap != null) {
-                        //请求ocr服务
+                        //请求机器识别服务
                         tvResult.setText("");
-                        requestOcrTokenService(localBitmap);
+                        requestMlTokenService(new File(filePath));
                     } else {
                         Log.e("error", "localBitmap is null");
                     }
@@ -149,11 +146,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (resultCode == RESULT_OK) {
                     try {
                         //将拍摄的照片显示出来
-                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-                        ivLocalImage.setImageBitmap(bitmap);
                         tvResult.setText("");
-                        requestOcrTokenService(bitmap);
-                    } catch (FileNotFoundException e) {
+                        requestMlTokenService(outputImage);
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -162,12 +157,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * 请求ocr服务
+     * 请求机器识别服务
      *
-     * @param bitmap
+     * @param file
      */
-    private void requestOcrTokenService(Bitmap bitmap) {
-        ocrToken.requestOcrTokenService(url, bitmap, null, new Callback() {
+    private void requestMlTokenService(File file) {
+        ocrToken.requestmlTokenServiceByFile(url, file, null, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 localResult = e.toString();

@@ -1,4 +1,4 @@
-package com.ocr.sdk;
+package com.ml.sdk;
 
 import org.junit.Test;
 
