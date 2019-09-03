@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String userName = "";
     String password = "";
     private String region = "cn-south-1";
-    private String url = "https://86a244ebacee403eb4a6897beb88b5f8.apigw.cn-north-1.huaweicloud.com/v1/infers/67bf2303-c36e-4b9a-963c-885653beedc5";
+    private String url = "https://02876a96e6cc450fa5a0061c9e896cae.apigw.cn-north-1.huaweicloud.com/v1/infers/2a2cade0-7af1-4378-b987-083077b299c5";
 
 
     @Override
