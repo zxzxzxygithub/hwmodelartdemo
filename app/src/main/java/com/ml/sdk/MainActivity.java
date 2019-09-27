@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_choose).setOnClickListener(this);
         ivLocalImage = findViewById(R.id.iv_img);
         tvResult = findViewById(R.id.tv_result);
-        localBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pic_02);
+        localBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.modelartslogo);
         initData();
         //动态申请相机和读写权限
         initPermission();

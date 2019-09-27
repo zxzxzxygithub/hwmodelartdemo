@@ -16,7 +16,7 @@
         android:id="@+id/iv_img"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:src="@drawable/pic_02" />
+        android:src="@mipmap/modelartslogo" />
 
     <LinearLayout
         android:layout_width="match_parent"
