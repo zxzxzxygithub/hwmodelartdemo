@@ -5,9 +5,11 @@ clone下来之后导入android studio并做以下改动
 
 config.gradle里面内容格式如下,
 
+```
 ext.uname = ""
 ext.dname = ""
 ext.pwd = ""
+```
 在引号中填写用户名和密码dname一般和uname保持一致,dname的获取可以在华为云官网进入我的凭证--IAM用户名即是
 
 2. 启动已经部署的在线服务
