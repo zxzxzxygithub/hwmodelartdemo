@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String domainName = ""; // if the user isn't IAM user, domain_name is the same with username
     String userName = "";
     String password = "";
-    private String region = "cn-south-1";
+    private String region = "cn-north-1";
     private String url = "https://02876a96e6cc450fa5a0061c9e896cae.apigw.cn-north-1.huaweicloud.com/v1/infers/2a2cade0-7af1-4378-b987-083077b299c5";
 
 
